@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="79">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="Events" projectFiles="true">
+        <itemPath>Action.h</itemPath>
+        <itemPath>CollisionDetector.h</itemPath>
+        <itemPath>CollisionEvent.h</itemPath>
+        <itemPath>Event.h</itemPath>
+        <itemPath>EventHandler.h</itemPath>
+        <itemPath>TestActionOne.h</itemPath>
+        <itemPath>TestEventOne.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Math" projectFiles="true">
+        <itemPath>FastMath.h</itemPath>
+        <itemPath>Mat.h</itemPath>
+        <itemPath>Mat2.h</itemPath>
+        <itemPath>Mat3.h</itemPath>
+        <itemPath>Mat4.h</itemPath>
+        <itemPath>Plane.h</itemPath>
+        <itemPath>Vec.h</itemPath>
+        <itemPath>Vec2.h</itemPath>
+        <itemPath>Vec3.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f9" displayName="Resource" projectFiles="true">
+        <itemPath>OBJLexicalAnalyser.h</itemPath>
+        <itemPath>OBJLoader.h</itemPath>
+        <itemPath>ResourceManager.h</itemPath>
+        <itemPath>Token.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3" displayName="Scenegraph" projectFiles="true">
+        <itemPath>AbstractRenderer.h</itemPath>
+        <itemPath>App.h</itemPath>
+        <itemPath>App2.h</itemPath>
+        <itemPath>App3.h</itemPath>
+        <itemPath>Bound.h</itemPath>
+        <itemPath>Collider.h</itemPath>
+        <itemPath>Geom.h</itemPath>
+        <itemPath>Node.h</itemPath>
+        <itemPath>Spatial.h</itemPath>
+        <itemPath>TexCoord.h</itemPath>
+        <itemPath>Trfm.h</itemPath>
+        <itemPath>Trfm2.h</itemPath>
+        <itemPath>Trfm3.h</itemPath>
+        <itemPath>Trimesh.h</itemPath>
+        <itemPath>Visual.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4"
+                     displayName="Scenegraph.Appearence"
+                     projectFiles="true">
+        <itemPath>Alpha.h</itemPath>
+        <itemPath>Colour.h</itemPath>
+        <itemPath>LineAtt.h</itemPath>
+        <itemPath>Material.h</itemPath>
+        <itemPath>PointAtt.h</itemPath>
+        <itemPath>PolyAtt.h</itemPath>
+        <itemPath>Texture.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5" displayName="Scenegraph.Cameras" projectFiles="true">
+        <itemPath>Cam.h</itemPath>
+        <itemPath>Cam2.h</itemPath>
+        <itemPath>Cam3.h</itemPath>
+        <itemPath>CameraMan2.h</itemPath>
+        <itemPath>CameraMan3.h</itemPath>
+        <itemPath>Viewport.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f6" displayName="Scenegraph.Collision" projectFiles="true">
+        <itemPath>BoundingSphere.h</itemPath>
+        <itemPath>BoundingVolume.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f7" displayName="Scenegraph.Lights" projectFiles="true">
+        <itemPath>DirLight.h</itemPath>
+        <itemPath>Light.h</itemPath>
+        <itemPath>LightBulb.h</itemPath>
+        <itemPath>LightMan.h</itemPath>
+        <itemPath>SpotLight.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f8" displayName="Utilities" projectFiles="true">
+        <itemPath>ArrayList.h</itemPath>
+        <itemPath>GetNode.h</itemPath>
+        <itemPath>HashMap.h</itemPath>
+        <itemPath>LinkedList.h</itemPath>
+        <itemPath>Object.h</itemPath>
+        <itemPath>Queue.h</itemPath>
+        <itemPath>SPtr.h</itemPath>
+        <itemPath>Stack.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="Events" projectFiles="true">
+        <itemPath>CollisionDetector.cpp</itemPath>
+        <itemPath>CollisionEvent.cpp</itemPath>
+        <itemPath>EventHandler.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Math" projectFiles="true">
+        <itemPath>FastMath.cpp</itemPath>
+        <itemPath>Mat.cpp</itemPath>
+        <itemPath>Mat2.cpp</itemPath>
+        <itemPath>Mat3.cpp</itemPath>
+        <itemPath>Mat4.cpp</itemPath>
+        <itemPath>Plane.cpp</itemPath>
+        <itemPath>Vec.cpp</itemPath>
+        <itemPath>Vec2.cpp</itemPath>
+        <itemPath>Vec3.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3" displayName="Resource" projectFiles="true">
+        <itemPath>OBJLexicalAnalyser.cpp</itemPath>
+        <itemPath>OBJLoader.cpp</itemPath>
+        <itemPath>ResourceManager.cpp</itemPath>
+        <itemPath>Token.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4" displayName="Scenegraph" projectFiles="true">
+        <itemPath>App.cpp</itemPath>
+        <itemPath>App2.cpp</itemPath>
+        <itemPath>App3.cpp</itemPath>
+        <itemPath>Node.cpp</itemPath>
+        <itemPath>TexCoord.cpp</itemPath>
+        <itemPath>Trfm.cpp</itemPath>
+        <itemPath>Trfm2.cpp</itemPath>
+        <itemPath>Trfm3.cpp</itemPath>
+        <itemPath>Trimesh.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5"
+                     displayName="Scenegraph.Appearence"
+                     projectFiles="true">
+        <itemPath>Alpha.cpp</itemPath>
+        <itemPath>Colour.cpp</itemPath>
+        <itemPath>LineAtt.cpp</itemPath>
+        <itemPath>Material.cpp</itemPath>
+        <itemPath>PointAtt.cpp</itemPath>
+        <itemPath>PolyAtt.cpp</itemPath>
+        <itemPath>Texture.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f6" displayName="Scenegraph.Cameras" projectFiles="true">
+        <itemPath>Cam2.cpp</itemPath>
+        <itemPath>Cam3.cpp</itemPath>
+        <itemPath>CameraMan2.cpp</itemPath>
+        <itemPath>CameraMan3.cpp</itemPath>
+        <itemPath>Viewport.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f7" displayName="Scenegraph.Collision" projectFiles="true">
+      </logicalFolder>
+      <logicalFolder name="f8" displayName="Scenegraph.Lights" projectFiles="true">
+        <itemPath>DirLight.cpp</itemPath>
+        <itemPath>Light.cpp</itemPath>
+        <itemPath>LightBulb.cpp</itemPath>
+        <itemPath>LightMan.cpp</itemPath>
+        <itemPath>SpotLight.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f9" displayName="Utilities" projectFiles="true">
+        <itemPath>GetNode.cpp</itemPath>
+        <itemPath>Object.cpp</itemPath>
+      </logicalFolder>
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+      </compileType>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>
