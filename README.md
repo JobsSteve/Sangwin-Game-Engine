@@ -8,3 +8,5 @@ Section 1
 
 Section 2
 ---------
+
+This is 'some code'
