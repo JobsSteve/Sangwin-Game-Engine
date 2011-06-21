@@ -5,13 +5,13 @@ Sangwin 3D is a lightweight C++ and OpenGL game engine aimed at the Android OS. 
 
 STL
 ---------
-Sangwin 3D uses no STL, and provides custom container classes and smart pointers to provide required behaviour. Container classes, are very similar to their Java counterparts, making it easy to word with both C++ and Java.
+Sangwin 3D uses no STL, and provides custom container classes and smart pointers to provide required behaviour. Container classes, are very similar to their Java counterparts, making it easy to work with both C++ and Java.
 
 STL implementations have recently become available for Android, and so these can be used if preferred.
 
 Using the Engine
 ---------
-Sangwin 3D is extremely easy to use. Check out the (soon to be uploaded) Sangwin Android Framework to see how make use of the engine code, and look at a very simple example game that shows how everything works.
+Sangwin 3D is extremely easy to use. Check out the (soon to be uploaded) Sangwin Android Framework to see how to make use of the engine code, and look at a very simple example game that shows how everything works.
 
 Netbeans
 ---------
