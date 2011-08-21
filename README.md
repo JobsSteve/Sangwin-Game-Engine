@@ -19,4 +19,4 @@ Sangwin 3D has been developed using Netbeans, and the Netbeans project files are
  
 Redesign
 ---------
-Currently, Sangwin is full of template code that allows both 2D and 3D games to be built. In the near future, this template code will be removed to make the engine simpler and lighter. 2D games will still easily be able to be built, but the code will be far less nasty.
+Currently, Sangwin is full of template code that allows both 2D and 3D games to be built. In the near future, this template code will be removed to make the engine simpler and lighter. 2D games will still easily be able to be built, but the code will be far less nasties.
