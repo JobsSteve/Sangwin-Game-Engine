@@ -37,7 +37,7 @@ protected:
     :Node(),
      boundGroup(0)
     {
-        type = BOUND;
+        type = Node::BOUND;
     }
     /**
      * Constructor that gives this Bound a name. Everything else as in default
@@ -49,7 +49,7 @@ protected:
     :Node(name),
      boundGroup(0)
     {
-        type = BOUND;
+        type = Node::BOUND;
     }
     /**
      * Copy constructor. See Node for more info. BoundingVolume is a deep copy.
@@ -58,11 +58,10 @@ protected:
      */
     Bound(const Bound& rhs)
     :Node(rhs),
-     bounds(),
+     bounds(new BoundingVolume(*rhs.bounds)),
      boundGroup(rhs.boundGroup)
     {
-        type = BOUND;
-        *bounds = *rhs.bounds;
+        type = Node::BOUND;
     }
 
 public:

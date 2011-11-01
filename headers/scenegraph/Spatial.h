@@ -1,14 +1,6 @@
 #ifndef SPATIAL_H
 #define	SPATIAL_H
 
-
-////////////////////////////////////////////////////////////////////////////////
-//                                                                            //
-//                                 DEFINITION                                 //
-//                                                                            //
-////////////////////////////////////////////////////////////////////////////////
-
-
 #include "headers/scenegraph/Bound.h"
 #include "headers/scenegraph/Trfm.h"
 
@@ -18,25 +10,21 @@
  * information.
  *
  * Spatial Nodes take advantage of the Trfm class to perform spatial functions.
- * They can be both 2D and 3D, and should therefore use Vec2/Vec3 and
- * Trfm2/Trfm3 as their template parameters. Any other template parameter will
- * cause an error on compilation.
  *
  * @author Ben Constable, original Java code by Oli Winks
- * @version 1.0
+ * @version 1.1
  *
  * @ingroup Scenegraph
  */
-template<class V, class T>
-class Spatial: public Bound<V> {
+class Spatial: Bound {
 
     friend class GetNode; ///< friend so that GetNode can access protected constructors
 
 protected:
 
     bool hasTransformed; ///< used by the renderer to tell when a transformation has occured
-    SPtr<T> localTransform; ///< local spatial information
-    SPtr<T> worldTransform; ///< world spatial information
+    SPtr<Trfm> localTransform; ///< local spatial information
+    SPtr<Trfm> worldTransform; ///< world spatial information
 
     /**
      * Default constructor. Create default Trfm data and gives the Spatial a
@@ -45,12 +33,12 @@ protected:
      * @param name Name for this Node
      */
     Spatial(const char* name)
-    :Bound<V>(name),
+    :Bound(name),
      hasTransformed(true),
-     localTransform(new T()),
-     worldTransform(new T())
+     localTransform(new Trfm()),
+     worldTransform(new Trfm())
     {
-        this->type = Node::SPATIAL;
+        type = Node::SPATIAL;
     }
     /**
      * Copy constructor. See Node for more information.
@@ -58,12 +46,12 @@ protected:
      * @param rhs Spatial to copy from
      */
     Spatial(const Spatial& rhs)
-    :Bound<V>(rhs),
+    :Bound(rhs),
      hasTransformed(true),
-     localTransform(new T(*rhs.localTransform)),
-     worldTransform(new T(*rhs.worldTransform))
+     localTransform(new Trfm(*rhs.localTransform)),
+     worldTransform(new Trfm(*rhs.worldTransform))
     {
-        this->type = Node::SPATIAL;
+        type = Node::SPATIAL;
     }
 
 public:
@@ -85,137 +73,40 @@ public:
      *
      * @return local transform
      */
-    inline T& getLocalTransform();
+    Trfm& getLocalTransform();
     /**
      * Get this Spatial's world transform.
      *
      * @return world transform
      */
-    inline T& getWorldTransform();
+    Trfm& getWorldTransform();
     /**
      * Whether or not this spatial has transformed.
      *
      * @return true if has transformed, false if not
      */
-    inline bool transformed();
+    bool transformed();
     /**
      * Set whether or not this Spatial has transformed.
      * 
      * @param transformed new hasTransformed value
      */
-    inline void setTransformed(bool transformed);
+    void setTransformed(bool transformed);
     /**
      * Update the local transform of this Spatial.
      */
-    inline void updateLocalTransform();
+    void updateLocalTransform();
     /**
      * Apply the give transform to this Spatial's world transform.
      *
      * @param worldTransform world transform to apply
      */
-    virtual void applyTransform(T& worldTransform);
+    virtual void applyTransform(Trfm& worldTransform);
     virtual SPtr<Node> clone();
     virtual SPtr<Node> cloneTree(SPtr<Node>& parent);
     
 };
 
-
-////////////////////////////////////////////////////////////////////////////////
-//                                                                            //
-//                               IMPLEMENTATION                               //
-//                                                                            //
-////////////////////////////////////////////////////////////////////////////////
-
-
-template<class V, class T>
-Spatial<V,T>& Spatial<V,T>::operator =(const Spatial& rhs) {
-
-    Bound<V>::operator =(rhs);
-
-    hasTransformed = rhs.hasTransformed;
-    *localTransform = *rhs.localTransform;
-    *worldTransform = *rhs.worldTransform;
-
-    return *this;
-}
-
-
-template<class V, class T>
-inline T& Spatial<V,T>::getLocalTransform() {
-
-    return *localTransform;
-}
-
-
-template<class V, class T>
-inline T& Spatial<V,T>::getWorldTransform() {
-
-    return *worldTransform;
-}
-
-
-template<class V, class T>
-inline bool Spatial<V,T>::transformed() {
-
-    return hasTransformed;
-}
-
-
-template<class V, class T>
-inline void Spatial<V,T>::setTransformed(bool transformed) {
-
-    hasTransformed = transformed;
-}
-
-
-template<class V, class T>
-inline void Spatial<V,T>::updateLocalTransform() {
-
-    localTransform->update();
-    hasTransformed = true;
-}
-
-
-template<class V, class T>
-void Spatial<V,T>::applyTransform(T& worldTransform) {
-
-    this->worldTransform->setTo(worldTransform);
-    hasTransformed = true;
-}
-
-
-template<class V, class T>
-SPtr<Node> Spatial<V,T>::clone() {
-
-    SPtr<Node> clone(new Spatial<V,T>(this->name));
-    clone.smart_static_cast(SPtr<Spatial<V,T> >())->localTransform->setTo(*localTransform);
-
-    if(this->bounds.get()) {
-        SPtr<BoundingVolume<V> > boundsClone(this->bounds->clone());
-        clone.smart_static_cast(SPtr<Spatial<V,T> >())->setBounds(boundsClone);
-    }
-
-    return clone;
-}
-
-
-template<class V, class T>
-SPtr<Node> Spatial<V,T>::cloneTree(SPtr<Node>& parent) {
-    
-    SPtr<Node> clone(this->clone());
-
-    //reparent clone
-    if(parent.get()) {
-        parent->attachChild(clone);
-    }
-
-    //recursively clone children
-    for(int i=0; i<this->children->size(); i++) {
-        this->children->get(i)->cloneTree(clone);
-    }
-
-    return clone;
-}
 
 #endif	/* SPATIAL_H */
 
