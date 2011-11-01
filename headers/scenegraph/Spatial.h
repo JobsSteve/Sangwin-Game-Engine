@@ -10,8 +10,7 @@
 
 
 #include "headers/scenegraph/Bound.h"
-#include "headers/scenegraph/Trfm2.h"
-#include "headers/scenegraph/Trfm3.h"
+#include "headers/scenegraph/Trfm.h"
 
 /**
  * The Spatial class extends the Bound class by adding spatial information. This
