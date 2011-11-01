@@ -1,0 +1,6 @@
+/nbproject*
+/build*
+/dist*
+main.cpp
+Makefile
+Doxyfile
