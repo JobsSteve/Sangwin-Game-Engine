@@ -1,6 +1,3 @@
-/nbproject*
-/build*
-/dist*
-main.cpp
-Makefile
-Doxyfile
+/build/Debug/
+/dist/Debug/
+/nbproject/private/
