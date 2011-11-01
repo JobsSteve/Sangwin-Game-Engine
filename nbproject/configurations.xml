@@ -57,6 +57,8 @@
       <logicalFolder name="scenegraph" displayName="scenegraph" projectFiles="true">
         <itemPath>headers/scenegraph/AbstractRenderer.h</itemPath>
         <itemPath>headers/scenegraph/App.h</itemPath>
+        <itemPath>headers/scenegraph/App2.h</itemPath>
+        <itemPath>headers/scenegraph/App3.h</itemPath>
         <itemPath>headers/scenegraph/Bound.h</itemPath>
         <itemPath>headers/scenegraph/Collider.h</itemPath>
         <itemPath>headers/scenegraph/Geom.h</itemPath>
@@ -64,6 +66,8 @@
         <itemPath>headers/scenegraph/Spatial.h</itemPath>
         <itemPath>headers/scenegraph/TexCoord.h</itemPath>
         <itemPath>headers/scenegraph/Trfm.h</itemPath>
+        <itemPath>headers/scenegraph/Trfm2.h</itemPath>
+        <itemPath>headers/scenegraph/Trfm3.h</itemPath>
         <itemPath>headers/scenegraph/Trimesh.h</itemPath>
         <itemPath>headers/scenegraph/Visual.h</itemPath>
       </logicalFolder>
@@ -100,8 +104,6 @@
         <itemPath>src/cameras/Viewport.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="collision" displayName="collision" projectFiles="true">
-        <itemPath>src/collision/BoundingSphere.cpp</itemPath>
-        <itemPath>src/collision/BoundingVolume.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="events" displayName="events" projectFiles="true">
         <itemPath>src/events/CollisionDetector.cpp</itemPath>
@@ -134,11 +136,13 @@
       </logicalFolder>
       <logicalFolder name="scenegraph" displayName="scenegraph" projectFiles="true">
         <itemPath>src/scenegraph/App.cpp</itemPath>
-        <itemPath>src/scenegraph/Bound.cpp</itemPath>
+        <itemPath>src/scenegraph/App2.cpp</itemPath>
+        <itemPath>src/scenegraph/App3.cpp</itemPath>
         <itemPath>src/scenegraph/Node.cpp</itemPath>
-        <itemPath>src/scenegraph/Spatial.cpp</itemPath>
         <itemPath>src/scenegraph/TexCoord.cpp</itemPath>
         <itemPath>src/scenegraph/Trfm.cpp</itemPath>
+        <itemPath>src/scenegraph/Trfm2.cpp</itemPath>
+        <itemPath>src/scenegraph/Trfm3.cpp</itemPath>
         <itemPath>src/scenegraph/Trimesh.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="utils" displayName="utils" projectFiles="true">

@@ -70,15 +70,11 @@ protected:
      */
     Bound(const Bound& rhs)
     :Node(rhs),
-     bounds(new BoundingVolume(*rhs.bounds)),
+     bounds(),
      boundGroup(rhs.boundGroup)
     {
-<<<<<<< HEAD
         type = BOUND;
         *bounds = *rhs.bounds;
-=======
-        type = Node::BOUND;
->>>>>>> parent of cd73978... Removed App object inheritance heirarchy, minor other fixes
     }
 
 public:

@@ -39,10 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/scenegraph/Node.o \
 	${OBJECTDIR}/src/resource/Token.o \
 	${OBJECTDIR}/src/appearance/PolyAtt.o \
-	${OBJECTDIR}/src/scenegraph/Spatial.o \
-	${OBJECTDIR}/src/collision/BoundingVolume.o \
 	${OBJECTDIR}/src/lights/SpotLight.o \
-	${OBJECTDIR}/src/collision/BoundingSphere.o \
 	${OBJECTDIR}/src/events/EventHandler.o \
 	${OBJECTDIR}/src/resource/ResourceManager.o \
 	${OBJECTDIR}/src/lights/DirLight.o \
@@ -53,6 +50,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/lights/LightBulb.o \
 	${OBJECTDIR}/src/maths/Mat4.o \
 	${OBJECTDIR}/src/scenegraph/App.o \
+	${OBJECTDIR}/src/scenegraph/App3.o \
 	${OBJECTDIR}/src/maths/Vec3.o \
 	${OBJECTDIR}/src/events/CollisionDetector.o \
 	${OBJECTDIR}/src/resource/OBJLoader.o \
@@ -60,11 +58,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maths/Vec2.o \
 	${OBJECTDIR}/src/maths/FastMath.o \
 	${OBJECTDIR}/src/appearance/PointAtt.o \
+	${OBJECTDIR}/src/scenegraph/Trfm2.o \
 	${OBJECTDIR}/src/lights/LightMan.o \
+	${OBJECTDIR}/src/scenegraph/Trfm3.o \
 	${OBJECTDIR}/src/cameras/CameraMan3.o \
-	${OBJECTDIR}/src/scenegraph/Bound.o \
 	${OBJECTDIR}/src/scenegraph/Trfm.o \
 	${OBJECTDIR}/src/appearance/Material.o \
+	${OBJECTDIR}/src/scenegraph/App2.o \
 	${OBJECTDIR}/src/resource/OBJLexicalAnalyser.o \
 	${OBJECTDIR}/src/cameras/Cam3.o \
 	${OBJECTDIR}/src/appearance/LineAtt.o \
@@ -129,25 +129,10 @@ ${OBJECTDIR}/src/appearance/PolyAtt.o: src/appearance/PolyAtt.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/appearance/PolyAtt.o src/appearance/PolyAtt.cpp
 
-${OBJECTDIR}/src/scenegraph/Spatial.o: src/scenegraph/Spatial.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/scenegraph/Spatial.o src/scenegraph/Spatial.cpp
-
-${OBJECTDIR}/src/collision/BoundingVolume.o: src/collision/BoundingVolume.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/collision
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/collision/BoundingVolume.o src/collision/BoundingVolume.cpp
-
 ${OBJECTDIR}/src/lights/SpotLight.o: src/lights/SpotLight.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/lights
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/lights/SpotLight.o src/lights/SpotLight.cpp
-
-${OBJECTDIR}/src/collision/BoundingSphere.o: src/collision/BoundingSphere.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/collision
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/collision/BoundingSphere.o src/collision/BoundingSphere.cpp
 
 ${OBJECTDIR}/src/events/EventHandler.o: src/events/EventHandler.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/events
@@ -199,6 +184,11 @@ ${OBJECTDIR}/src/scenegraph/App.o: src/scenegraph/App.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/scenegraph/App.o src/scenegraph/App.cpp
 
+${OBJECTDIR}/src/scenegraph/App3.o: src/scenegraph/App3.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/scenegraph/App3.o src/scenegraph/App3.cpp
+
 ${OBJECTDIR}/src/maths/Vec3.o: src/maths/Vec3.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maths
 	${RM} $@.d
@@ -234,20 +224,25 @@ ${OBJECTDIR}/src/appearance/PointAtt.o: src/appearance/PointAtt.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/appearance/PointAtt.o src/appearance/PointAtt.cpp
 
+${OBJECTDIR}/src/scenegraph/Trfm2.o: src/scenegraph/Trfm2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/scenegraph/Trfm2.o src/scenegraph/Trfm2.cpp
+
 ${OBJECTDIR}/src/lights/LightMan.o: src/lights/LightMan.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/lights
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/lights/LightMan.o src/lights/LightMan.cpp
 
+${OBJECTDIR}/src/scenegraph/Trfm3.o: src/scenegraph/Trfm3.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/scenegraph/Trfm3.o src/scenegraph/Trfm3.cpp
+
 ${OBJECTDIR}/src/cameras/CameraMan3.o: src/cameras/CameraMan3.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/cameras
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/cameras/CameraMan3.o src/cameras/CameraMan3.cpp
-
-${OBJECTDIR}/src/scenegraph/Bound.o: src/scenegraph/Bound.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/scenegraph/Bound.o src/scenegraph/Bound.cpp
 
 ${OBJECTDIR}/src/scenegraph/Trfm.o: src/scenegraph/Trfm.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
@@ -258,6 +253,11 @@ ${OBJECTDIR}/src/appearance/Material.o: src/appearance/Material.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/appearance
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/appearance/Material.o src/appearance/Material.cpp
+
+${OBJECTDIR}/src/scenegraph/App2.o: src/scenegraph/App2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/scenegraph/App2.o src/scenegraph/App2.cpp
 
 ${OBJECTDIR}/src/resource/OBJLexicalAnalyser.o: src/resource/OBJLexicalAnalyser.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/resource

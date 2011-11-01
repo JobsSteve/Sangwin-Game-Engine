@@ -28,12 +28,8 @@
  *
  * @ingroup Scenegraph
  */
-<<<<<<< HEAD
 template<class V, class T>
 class Spatial: public Bound<V> {
-=======
-class Spatial: Bound {
->>>>>>> parent of cd73978... Removed App object inheritance heirarchy, minor other fixes
 
     friend class GetNode; ///< friend so that GetNode can access protected constructors
 
