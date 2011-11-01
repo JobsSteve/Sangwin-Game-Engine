@@ -58,10 +58,11 @@ protected:
      */
     Bound(const Bound& rhs)
     :Node(rhs),
-     bounds(new BoundingVolume(*rhs.bounds)),
+     bounds(),
      boundGroup(rhs.boundGroup)
     {
         type = Node::BOUND;
+        *bounds = *rhs.bounds;
     }
 
 public:

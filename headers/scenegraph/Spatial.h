@@ -16,7 +16,7 @@
  *
  * @ingroup Scenegraph
  */
-class Spatial: Bound {
+class Spatial: public Bound {
 
     friend class GetNode; ///< friend so that GetNode can access protected constructors
 
