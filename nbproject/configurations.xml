@@ -135,6 +135,7 @@
       <logicalFolder name="scenegraph" displayName="scenegraph" projectFiles="true">
         <itemPath>src/scenegraph/App.cpp</itemPath>
         <itemPath>src/scenegraph/Bound.cpp</itemPath>
+        <itemPath>src/scenegraph/Geom.cpp</itemPath>
         <itemPath>src/scenegraph/Node.cpp</itemPath>
         <itemPath>src/scenegraph/Spatial.cpp</itemPath>
         <itemPath>src/scenegraph/TexCoord.cpp</itemPath>

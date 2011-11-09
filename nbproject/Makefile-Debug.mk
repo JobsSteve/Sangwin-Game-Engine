@@ -49,6 +49,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/utils/Object.o \
 	${OBJECTDIR}/src/scenegraph/Trimesh.o \
 	${OBJECTDIR}/src/maths/Vec.o \
+	${OBJECTDIR}/src/scenegraph/Geom.o \
 	${OBJECTDIR}/src/lights/Light.o \
 	${OBJECTDIR}/src/lights/LightBulb.o \
 	${OBJECTDIR}/src/maths/Mat4.o \
@@ -179,6 +180,11 @@ ${OBJECTDIR}/src/maths/Vec.o: src/maths/Vec.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/maths
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/maths/Vec.o src/maths/Vec.cpp
+
+${OBJECTDIR}/src/scenegraph/Geom.o: src/scenegraph/Geom.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/scenegraph/Geom.o src/scenegraph/Geom.cpp
 
 ${OBJECTDIR}/src/lights/Light.o: src/lights/Light.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/lights
