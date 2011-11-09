@@ -1,15 +1,8 @@
 #ifndef VISUAL_H
 #define	VISUAL_H
 
-////////////////////////////////////////////////////////////////////////////////
-//                                                                            //
-//                                 DEFINITION                                 //
-//                                                                            //
-////////////////////////////////////////////////////////////////////////////////
-
 #include "headers/scenegraph/Spatial.h"
-#include "headers/scenegraph/App2.h"
-#include "headers/scenegraph/App3.h"
+#include "headers/scenegraph/App.h"
 
 /**
  * The Visual class extends the Spatial class by adding visual information. This
@@ -25,15 +18,14 @@
  * 
  * @ingroup Scenegraph
  */
-template<class V, class T, class A>
-class Visual: public Spatial<V,T> {
+class Visual: public Spatial {
 
     friend class GetNode; ///< friend so that GetNode can access protected constructors
 
 protected:
 
-    SPtr<A> worldAppearance; ///< local visual information
-    SPtr<A> localAppearance; ///< world visual information
+    SPtr<App> worldAppearance; ///< local visual information
+    SPtr<App> localAppearance; ///< world visual information
 
     /**
      * Default constructor. Gives default visual information and sets the name
@@ -42,9 +34,9 @@ protected:
      * @param name Name of this Node
      */
     Visual(const char* name)
-    :Spatial<V,T>(name),
-     worldAppearance(new A()),
-     localAppearance(new A()),
+    :Spatial(name),
+     worldAppearance(new App()),
+     localAppearance(new App()),
      hasVisualStateChanged(true)
     {
         this->type = Node::VISUAL;
@@ -55,9 +47,9 @@ protected:
      * @param rhs Visual node to copy from
      */
     Visual(const Visual& rhs)
-    :Spatial<V,T>(rhs),
-     worldAppearance(new A(*rhs.worldAppearance)),
-     localAppearance(new A(*rhs.localAppearance)),
+    :Spatial(rhs),
+     worldAppearance(new App(*rhs.worldAppearance)),
+     localAppearance(new App(*rhs.localAppearance)),
      hasVisualStateChanged(true)
     {
         this->type = Node::VISUAL;
@@ -86,14 +78,14 @@ public:
      *
      * @return the local appearance
      */
-    A& getLocalAppearance();
+    App& getLocalAppearance();
     /**
      * Get this Visual's world appearance. This should not be modified, as it
      * will affect all of the other Nodes in the scenegraph.
      * 
      * @return the world appearance
      */
-    inline A& getWorldAppearance();
+    inline App& getWorldAppearance();
     /**
      * Apply the accumulated appearance of the scenegraph to this Visual.
      *
@@ -102,90 +94,10 @@ public:
      * 
      * @param worldAppearance accumulated appearance of the scenegraph
      */
-    void applyAppearance(const A& worldAppearance);
+    void applyAppearance(const App& worldAppearance);
     virtual SPtr<Node> clone();
     virtual SPtr<Node> cloneTree(SPtr<Node>& parent);
-
-
 };
-
-
-////////////////////////////////////////////////////////////////////////////////
-//                                                                            //
-//                               IMPLEMENTATION                               //
-//                                                                            //
-////////////////////////////////////////////////////////////////////////////////
-
-
-template<class V,class T,class A>
-Visual<V,T,A>& Visual<V,T,A>::operator =(const Visual& rhs) {
-
-    Spatial<V,T>::operator =(rhs);
-
-    *worldAppearance = *rhs.worldAppearance;
-    *localAppearance = *rhs.localAppearance;
-    hasVisualStateChanged = rhs.hasVisualStateChanged;
-
-    return *this;
-}
-
-
-template<class V,class T,class A>
-A& Visual<V,T,A>::getLocalAppearance() {
-
-    hasVisualStateChanged = true;
-    return *localAppearance;
-}
-
-
-template<class V,class T,class A>
-inline A& Visual<V,T,A>::getWorldAppearance() {
-
-    return *worldAppearance;
-}
-
-
-template<class V,class T,class A>
-void Visual<V,T,A>::applyAppearance(const A& worldAppearance) {
-
-    this->worldAppearance->setTo(worldAppearance);
-    hasVisualStateChanged = true;
-}
-
-
-template<class V,class T,class A>
-SPtr<Node> Visual<V,T,A>::clone() {
-
-    SPtr<Node> clone(new Visual<V,T,A>(this->name));
-    clone.smart_static_cast(SPtr<Visual<V,T,A> >())->localTransform->setTo(*(this->localTransform));
-    clone.smart_static_cast(SPtr<Visual<V,T,A> >())->localAppearance->setTo(*localAppearance);
-
-    if(this->bounds.get()) {
-        SPtr<BoundingVolume<V> > boundsClone(this->bounds->clone());
-        clone.smart_static_cast(SPtr<Visual<V,T,A> >())->setBounds(boundsClone);
-    }
-
-    return clone;
-}
-
-
-template<class V,class T,class A>
-SPtr<Node> Visual<V,T,A>::cloneTree(SPtr<Node>& parent) {
-
-    SPtr<Node> clone(this->clone());
-
-    //reparent clone
-    if(parent.get()) {
-        parent->attachChild(clone);
-    }
-
-    //recursively clone children
-    for(int i=0; i<this->children->size(); i++) {
-        this->children->get(i)->cloneTree(clone);
-    }
-
-    return clone;
-}
 
 
 #endif	/* VISUAL_H */

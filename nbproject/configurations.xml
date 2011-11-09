@@ -140,6 +140,7 @@
         <itemPath>src/scenegraph/TexCoord.cpp</itemPath>
         <itemPath>src/scenegraph/Trfm.cpp</itemPath>
         <itemPath>src/scenegraph/Trimesh.cpp</itemPath>
+        <itemPath>src/scenegraph/Visual.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="utils" displayName="utils" projectFiles="true">
         <itemPath>src/utils/GetNode.cpp</itemPath>

@@ -54,6 +54,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maths/Mat4.o \
 	${OBJECTDIR}/src/scenegraph/App.o \
 	${OBJECTDIR}/src/maths/Vec3.o \
+	${OBJECTDIR}/src/scenegraph/Visual.o \
 	${OBJECTDIR}/src/events/CollisionDetector.o \
 	${OBJECTDIR}/src/resource/OBJLoader.o \
 	${OBJECTDIR}/src/scenegraph/TexCoord.o \
@@ -203,6 +204,11 @@ ${OBJECTDIR}/src/maths/Vec3.o: src/maths/Vec3.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/maths
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/maths/Vec3.o src/maths/Vec3.cpp
+
+${OBJECTDIR}/src/scenegraph/Visual.o: src/scenegraph/Visual.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/scenegraph/Visual.o src/scenegraph/Visual.cpp
 
 ${OBJECTDIR}/src/events/CollisionDetector.o: src/events/CollisionDetector.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/events
