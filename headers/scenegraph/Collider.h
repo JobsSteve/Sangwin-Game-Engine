@@ -15,12 +15,11 @@
  * without the need for any visual information.
  *
  * @author Ben Constable, original Java code by Oli Winks
- * @version 1.0
+ * @version 1.1
  *
  * @ingroup Scenegraph
  */
-template<class V, class T>
-class Collider: public Spatial<V,T> {
+class Collider: public Spatial {
 
     friend class GetNode; ///< friend so GetNode can access protected constructors
 
@@ -34,7 +33,7 @@ protected:
      * @param name
      */
     Collider(const char* name)
-    :Spatial<V,T>(name)
+    :Spatial(name)
     {
         this->type = Node::COLLIDER;
     }
@@ -44,7 +43,7 @@ protected:
      * @param rhs Collider to copy from
      */
     Collider(const Collider& rhs)
-    :Spatial<V,T>(rhs)
+    :Spatial(rhs)
     {
         this->type = Node::COLLIDER;
     }
@@ -71,7 +70,7 @@ public:
      * @param from not used
      * @param to not used
      */
-    void updateBounds(ArrayList<SPtr<BoundingVolume<V> > >& childBounds, int from, int to);
+    void updateBounds(ArrayList<SPtr<BoundingVolume> >& childBounds, int from, int to);
     /**
      * Does nothing as Collider is a leaf Node.
      *
@@ -95,68 +94,6 @@ public:
     SPtr<Node> cloneTree(SPtr<Node>& parent);
 
 };
-
-
-////////////////////////////////////////////////////////////////////////////////
-//                                                                            //
-//                               IMPLEMENTATION                               //
-//                                                                            //
-////////////////////////////////////////////////////////////////////////////////
-
-
-template<class V, class T>
-Collider<V,T>& Collider<V,T>::operator =(const Collider& rhs) {
-
-    Spatial<V,T>::operator =(rhs);
-
-    return *this;
-}
-
-
-template<class V, class T>
-void Collider<V,T>::updateBounds(ArrayList<SPtr<BoundingVolume<V> > >& childBounds, int from, int to) {
-
-    if(this->bounds.get()) {
-        this->bounds->applyTransform(*(this->worldTransform));
-    }
-}
-
-
-template<class V, class T>
-void Collider<V,T>::attachChild(SPtr<Node> child) {}
-
-
-template<class V, class T>
-void Collider<V,T>::detachChild(const SPtr<Node>& child) {}
-
-
-template<class V, class T>
-SPtr<Node> Collider<V,T>::detachChild(int i) {
-
-    return SPtr<Node>();
-}
-
-
-template<class V, class T>
-SPtr<Node> Collider<V,T>::clone() {
-
-    SPtr<Node> clone(new Collider<V,T>(this->name));
-    clone.smart_static_cast(SPtr<Collider<V,T> >())->localTransform->setTo(*(this->localTransform));
-
-    if(this->bounds.get()) {
-        SPtr<BoundingVolume<V> > boundsClone(this->bounds->clone());
-        clone.smart_static_cast(SPtr<Collider<V,T> >())->setBounds(boundsClone);
-    }
-
-    return clone;
-}
-
-
-template<class V, class T>
-SPtr<Node> Collider<V,T>::cloneTree(SPtr<Node>& parent) {
-
-    return clone();
-}
 
 
 #endif	/* COLLIDER_H */

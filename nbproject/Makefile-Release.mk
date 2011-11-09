@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/cameras/CameraMan2.o \
 	${OBJECTDIR}/src/appearance/Alpha.o \
+	${OBJECTDIR}/src/scenegraph/Collider.o \
 	${OBJECTDIR}/src/scenegraph/Node.o \
 	${OBJECTDIR}/src/resource/Token.o \
 	${OBJECTDIR}/src/appearance/PolyAtt.o \
@@ -115,6 +116,11 @@ ${OBJECTDIR}/src/appearance/Alpha.o: src/appearance/Alpha.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/appearance
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/appearance/Alpha.o src/appearance/Alpha.cpp
+
+${OBJECTDIR}/src/scenegraph/Collider.o: src/scenegraph/Collider.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/scenegraph/Collider.o src/scenegraph/Collider.cpp
 
 ${OBJECTDIR}/src/scenegraph/Node.o: src/scenegraph/Node.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
