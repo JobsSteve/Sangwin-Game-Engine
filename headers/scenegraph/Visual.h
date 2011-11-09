@@ -9,12 +9,9 @@
  * is in the form of local (self) or world (related to root) information.
  *
  * Visual Nodes take advantage of the App class to add visual functionality.
- * They can be both 2D and 3D, and should therefore use Vec2/Vec3, Trfm2/Trfm3
- * and App2/App3 as their template parameters. Any other template parameter will
- * cause an error on compilation.
  *
  * @author Ben Constable, original Java code by Oli Winks
- * @version 1.0
+ * @version 1.1
  * 
  * @ingroup Scenegraph
  */
@@ -85,7 +82,7 @@ public:
      * 
      * @return the world appearance
      */
-    inline App& getWorldAppearance();
+    App& getWorldAppearance();
     /**
      * Apply the accumulated appearance of the scenegraph to this Visual.
      *
