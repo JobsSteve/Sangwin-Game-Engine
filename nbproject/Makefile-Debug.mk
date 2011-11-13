@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/cameras/Cam.o \
 	${OBJECTDIR}/src/appearance/Alpha.o \
+	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/scenegraph/Collider.o \
 	${OBJECTDIR}/src/scenegraph/Node.o \
 	${OBJECTDIR}/src/resource/Token.o \
@@ -70,7 +71,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/appearance/Material.o \
 	${OBJECTDIR}/src/resource/OBJLexicalAnalyser.o \
 	${OBJECTDIR}/src/appearance/LineAtt.o \
-	${OBJECTDIR}/src/utils/GetNode.o \
 	${OBJECTDIR}/src/maths/Plane.o \
 	${OBJECTDIR}/src/events/CollisionEvent.o \
 	${OBJECTDIR}/src/cameras/Viewport.o \
@@ -103,7 +103,7 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sangwinredesign: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sangwinredesign ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	g++ -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sangwinredesign ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/src/cameras/Cam.o: src/cameras/Cam.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/cameras
@@ -114,6 +114,11 @@ ${OBJECTDIR}/src/appearance/Alpha.o: src/appearance/Alpha.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/appearance
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/appearance/Alpha.o src/appearance/Alpha.cpp
+
+${OBJECTDIR}/src/main.o: src/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 ${OBJECTDIR}/src/scenegraph/Collider.o: src/scenegraph/Collider.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
@@ -284,11 +289,6 @@ ${OBJECTDIR}/src/appearance/LineAtt.o: src/appearance/LineAtt.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/appearance
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/appearance/LineAtt.o src/appearance/LineAtt.cpp
-
-${OBJECTDIR}/src/utils/GetNode.o: src/utils/GetNode.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/utils
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/utils/GetNode.o src/utils/GetNode.cpp
 
 ${OBJECTDIR}/src/maths/Plane.o: src/maths/Plane.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maths

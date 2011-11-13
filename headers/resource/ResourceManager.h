@@ -2,7 +2,8 @@
 #define	RESOURCEMANAGER_H
 
 #include "headers/utils/HashMap.h"
-#include "headers/utils/GetNode.h"
+#include "headers/appearance/Texture.h"
+#include "headers/scenegraph/Visual.h"
 
 /**
  * The ResourceManager class handles all of the resources used throughout the
@@ -23,7 +24,7 @@ private:
     static ResourceManager* inst; ///< instance of this ResourceManager
 
     SPtr<HashMap<SPtr<Texture> > > textures; ///< map of textures
-    SPtr<HashMap<Visual3D> > models; ///< map of models
+    SPtr<HashMap<SPtr<Visual> > > models; ///< map of models
 
     /**
      * Default constructor. Creates empty maps of textures and models.
@@ -97,7 +98,7 @@ public:
      * @param filename filename of model to add
      * @param mod Model to add
      */
-    void addModel(const char* filename, Visual3D mod);
+    void addModel(const char* filename, SPtr<Visual> mod);
     /**
      * Retrieve a clone of the model with the given filename from the list.
      *
@@ -110,7 +111,7 @@ public:
      * @param filename filename of model to retrieve
      * @return Model clone
      */
-    Visual3D getModel(const char* filename);
+    SPtr<Visual> getModel(const char* filename);
     /**
      * Return the actual model with the given filename, so that it's visual
      * and transformation data can be modified directly.
@@ -121,7 +122,7 @@ public:
      * @param filename filename of model to retrieve
      * @return Model
      */
-    Visual3D getModelActual(const char* filename);
+    SPtr<Visual> getModelActual(const char* filename);
     /**
      * Return all of the models in the ResourceMananger in an ArrayList.
      *
@@ -129,7 +130,7 @@ public:
      *
      * @return Models in an ArrayList
      */
-    SPtr<ArrayList<Visual3D> > getModels();
+    SPtr<ArrayList<SPtr<Visual> > > getModels();
 };
 
 #endif	/* RESOURCEMANAGER_H */

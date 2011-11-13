@@ -2,3 +2,4 @@
 /dist*
 Doxyfile
 /nbproject/private/
+main.cpp

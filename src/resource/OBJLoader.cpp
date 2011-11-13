@@ -134,7 +134,7 @@ void OBJLoader::loadModel(char* data, int filesize, const char* filename) {
     //If there is more than one group:
     if(numOfGroups > 1) {
         //Create the group root node
-        SPtr<Visual<Vec3,Trfm3,App3> > nodeGroup(GetNode::newVisual3D(" "));
+        SPtr<Visual> nodeGroup(new Visual(" "));
         //Create individual nodes for each group, and attach them to the root
         for(int i=0; i<groups.size(); i++) {
             SPtr<Node> node(groups.get(i)->convert());
@@ -146,7 +146,7 @@ void OBJLoader::loadModel(char* data, int filesize, const char* filename) {
     }
     //If there was only one group, convert and add to the ResourceManager.
     else {
-        SPtr<Visual<Vec3,Trfm3,App3> > node(groups.get(0)->convert());
+        SPtr<Visual> node(groups.get(0)->convert());
         ResourceManager::instance()->addModel(filename,node);
         reset();
     }

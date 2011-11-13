@@ -4,7 +4,7 @@ ResourceManager* ResourceManager::inst;
 
 ResourceManager::ResourceManager()
 :textures(new HashMap<SPtr<Texture> >()),
- models(new HashMap<Visual3D>())
+ models(new HashMap<SPtr<Visual> >())
 {}
 
 
@@ -53,7 +53,7 @@ SPtr<ArrayList<SPtr<Texture> > > ResourceManager::getTextures() {
 }
 
 
-void ResourceManager::addModel(const char* filename, Visual3D mod) {
+void ResourceManager::addModel(const char* filename, SPtr<Visual> mod) {
 
     if(!models->containsKey(filename)) {
         models->put(filename, mod);
@@ -61,30 +61,30 @@ void ResourceManager::addModel(const char* filename, Visual3D mod) {
 }
 
 
-Visual3D ResourceManager::getModel(const char* filename) {
+SPtr<Visual> ResourceManager::getModel(const char* filename) {
 
     if(models->containsKey(filename)) {
         SPtr<Node> n(0);
-        return models->get(filename)->cloneTree(n).smart_static_cast(Visual3D());
+        return models->get(filename)->cloneTree(n).smart_static_cast(SPtr<Visual>());
     }
     else {
-        return Visual3D();
+        return SPtr<Visual>();
     }
 }
 
 
-Visual3D ResourceManager::getModelActual(const char* filename) {
+SPtr<Visual> ResourceManager::getModelActual(const char* filename) {
 
     if(models->containsKey(filename)) {
         return models->get(filename);
         }
     else {
-        return Visual3D();
+        return SPtr<Visual>();
     }
 }
 
 
-SPtr<ArrayList<Visual3D> > ResourceManager::getModels() {
+SPtr<ArrayList<SPtr<Visual> > > ResourceManager::getModels() {
 
     return models->values();
 }

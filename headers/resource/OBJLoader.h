@@ -1,10 +1,10 @@
 #ifndef OBJLOADER_H
 #define	OBJLOADER_H
 
-#include "headers/utils/GetNode.h"
 #include "headers/utils/HashMap.h"
 #include "headers/resource/OBJLexicalAnalyser.h"
 #include "headers/resource/ResourceManager.h"
+#include "headers/scenegraph/Geom.h"
 
 /**
  * The OBJLoader takes an .OBJ or .MTL file as input, and builds physical
@@ -192,7 +192,7 @@ private:
          *
          * @return Visual Node
          */
-        SPtr<Visual<Vec3,Trfm3,App3> > convert() {
+        SPtr<Visual> convert() {
             //Create the geometry
             int tempSize = numOfFaces*3;
             Vec3 vertexArray[tempSize];
@@ -213,7 +213,7 @@ private:
                 }
             }
             
-            SPtr<Geom<Vec3,Trfm3,App3> > model;
+            SPtr<Geom> model;
             if(hasTexCoords && hasNormals) {
                 SPtr<Trimesh> t(new Trimesh(Trimesh::TRIANGLES,vertexArray,normalArray,tempSize,tempSize));
                 SPtr<TexCoord> tc(new TexCoord(tempSize*2));
@@ -221,15 +221,15 @@ private:
                     tc->addCoord(texCoordArray[j]);
                 }
                 t->addTexCoords(tc);
-                model = GetNode::newGeom3D(name,t);
+                model = SPtr<Geom>(new Geom(name,t));
             }
             else if(hasNormals) {
                 SPtr<Trimesh> t(new Trimesh(Trimesh::TRIANGLES,vertexArray,normalArray,tempSize,tempSize));
-                model = GetNode::newGeom3D(name,t);
+                model = SPtr<Geom>(new Geom(name,t));
             }
             else {
                 SPtr<Trimesh> t(new Trimesh(Trimesh::TRIANGLES,vertexArray,tempSize));
-                model = GetNode::newGeom3D(name,t);
+                model = SPtr<Geom>(new Geom(name,t));
             }
 
             //Create the material

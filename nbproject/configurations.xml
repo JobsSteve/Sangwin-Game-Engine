@@ -13,10 +13,7 @@
       </logicalFolder>
       <logicalFolder name="cameras" displayName="cameras" projectFiles="true">
         <itemPath>headers/cameras/Cam.h</itemPath>
-        <itemPath>headers/cameras/Cam2.h</itemPath>
-        <itemPath>headers/cameras/Cam3.h</itemPath>
-        <itemPath>headers/cameras/CameraMan2.h</itemPath>
-        <itemPath>headers/cameras/CameraMan3.h</itemPath>
+        <itemPath>headers/cameras/CameraMan.h</itemPath>
         <itemPath>headers/cameras/Viewport.h</itemPath>
       </logicalFolder>
       <logicalFolder name="collision" displayName="collision" projectFiles="true">
@@ -69,7 +66,6 @@
       </logicalFolder>
       <logicalFolder name="utils" displayName="utils" projectFiles="true">
         <itemPath>headers/utils/ArrayList.h</itemPath>
-        <itemPath>headers/utils/GetNode.h</itemPath>
         <itemPath>headers/utils/HashMap.h</itemPath>
         <itemPath>headers/utils/LinkedList.h</itemPath>
         <itemPath>headers/utils/Object.h</itemPath>
@@ -94,10 +90,7 @@
       </logicalFolder>
       <logicalFolder name="cameras" displayName="cameras" projectFiles="true">
         <itemPath>src/cameras/Cam.cpp</itemPath>
-        <itemPath>src/cameras/Cam2.cpp</itemPath>
-        <itemPath>src/cameras/Cam3.cpp</itemPath>
-        <itemPath>src/cameras/CameraMan2.cpp</itemPath>
-        <itemPath>src/cameras/CameraMan3.cpp</itemPath>
+        <itemPath>src/cameras/CameraMan.cpp</itemPath>
         <itemPath>src/cameras/Viewport.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="collision" displayName="collision" projectFiles="true">
@@ -146,7 +139,6 @@
         <itemPath>src/scenegraph/Visual.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="utils" displayName="utils" projectFiles="true">
-        <itemPath>src/utils/GetNode.cpp</itemPath>
         <itemPath>src/utils/Object.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -161,6 +153,7 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>src/main.cpp</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>src</Elem>
@@ -171,7 +164,7 @@
     <conf name="Debug" type="1">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
-        <compilerSet>GNU|GNU</compilerSet>
+        <compilerSet>default</compilerSet>
       </toolsSet>
       <compileType>
         <ccTool>
@@ -179,6 +172,9 @@
             <pElem>.</pElem>
           </incDir>
         </ccTool>
+        <linkerTool>
+          <commandlineTool>g++</commandlineTool>
+        </linkerTool>
       </compileType>
     </conf>
     <conf name="Release" type="1">
