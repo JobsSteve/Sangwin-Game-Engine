@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/cameras/Cam.o \
-	${OBJECTDIR}/src/cameras/CameraMan2.o \
 	${OBJECTDIR}/src/appearance/Alpha.o \
 	${OBJECTDIR}/src/scenegraph/Collider.o \
 	${OBJECTDIR}/src/scenegraph/Node.o \
@@ -57,6 +56,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maths/Mat4.o \
 	${OBJECTDIR}/src/scenegraph/App.o \
 	${OBJECTDIR}/src/maths/Vec3.o \
+	${OBJECTDIR}/src/cameras/CameraMan.o \
 	${OBJECTDIR}/src/scenegraph/Visual.o \
 	${OBJECTDIR}/src/events/CollisionDetector.o \
 	${OBJECTDIR}/src/resource/OBJLoader.o \
@@ -65,14 +65,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maths/FastMath.o \
 	${OBJECTDIR}/src/appearance/PointAtt.o \
 	${OBJECTDIR}/src/lights/LightMan.o \
-	${OBJECTDIR}/src/cameras/CameraMan3.o \
 	${OBJECTDIR}/src/scenegraph/Bound.o \
 	${OBJECTDIR}/src/scenegraph/Trfm.o \
 	${OBJECTDIR}/src/appearance/Material.o \
 	${OBJECTDIR}/src/resource/OBJLexicalAnalyser.o \
-	${OBJECTDIR}/src/cameras/Cam3.o \
 	${OBJECTDIR}/src/appearance/LineAtt.o \
-	${OBJECTDIR}/src/cameras/Cam2.o \
 	${OBJECTDIR}/src/utils/GetNode.o \
 	${OBJECTDIR}/src/maths/Plane.o \
 	${OBJECTDIR}/src/events/CollisionEvent.o \
@@ -112,11 +109,6 @@ ${OBJECTDIR}/src/cameras/Cam.o: src/cameras/Cam.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/cameras
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/cameras/Cam.o src/cameras/Cam.cpp
-
-${OBJECTDIR}/src/cameras/CameraMan2.o: src/cameras/CameraMan2.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/cameras
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/cameras/CameraMan2.o src/cameras/CameraMan2.cpp
 
 ${OBJECTDIR}/src/appearance/Alpha.o: src/appearance/Alpha.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/appearance
@@ -223,6 +215,11 @@ ${OBJECTDIR}/src/maths/Vec3.o: src/maths/Vec3.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/maths/Vec3.o src/maths/Vec3.cpp
 
+${OBJECTDIR}/src/cameras/CameraMan.o: src/cameras/CameraMan.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/cameras
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/cameras/CameraMan.o src/cameras/CameraMan.cpp
+
 ${OBJECTDIR}/src/scenegraph/Visual.o: src/scenegraph/Visual.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
 	${RM} $@.d
@@ -263,11 +260,6 @@ ${OBJECTDIR}/src/lights/LightMan.o: src/lights/LightMan.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/lights/LightMan.o src/lights/LightMan.cpp
 
-${OBJECTDIR}/src/cameras/CameraMan3.o: src/cameras/CameraMan3.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/cameras
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/cameras/CameraMan3.o src/cameras/CameraMan3.cpp
-
 ${OBJECTDIR}/src/scenegraph/Bound.o: src/scenegraph/Bound.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/scenegraph
 	${RM} $@.d
@@ -288,20 +280,10 @@ ${OBJECTDIR}/src/resource/OBJLexicalAnalyser.o: src/resource/OBJLexicalAnalyser.
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/resource/OBJLexicalAnalyser.o src/resource/OBJLexicalAnalyser.cpp
 
-${OBJECTDIR}/src/cameras/Cam3.o: src/cameras/Cam3.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/cameras
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/cameras/Cam3.o src/cameras/Cam3.cpp
-
 ${OBJECTDIR}/src/appearance/LineAtt.o: src/appearance/LineAtt.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/appearance
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/appearance/LineAtt.o src/appearance/LineAtt.cpp
-
-${OBJECTDIR}/src/cameras/Cam2.o: src/cameras/Cam2.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/cameras
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/cameras/Cam2.o src/cameras/Cam2.cpp
 
 ${OBJECTDIR}/src/utils/GetNode.o: src/utils/GetNode.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/utils
