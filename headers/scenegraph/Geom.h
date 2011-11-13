@@ -16,13 +16,13 @@
  * @ingroup Scenegraph
  */
 class Geom: public Visual {
-
-    friend class GetNode; ///< friend so that GetNode can access protected constructors
     
 protected:
 
     SPtr<Trimesh> trimesh; ///< This Geom's mesh data
 
+public:
+    
     /**
      * Default constructor. Takes a mesh and a name for this Geom as parameters.
      *
@@ -47,9 +47,6 @@ protected:
     {
         this->type = Node::GEOM;
     }
-
-public:
-
     /**
      * Assignment operator. Trimesh is an instance (SHALLOW copy) of the given
      * Geom's Trimesh. See Node for more information on copy behaviour.

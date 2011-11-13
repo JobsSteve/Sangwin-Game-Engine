@@ -46,6 +46,12 @@ Node::~Node() {
 }
 
 
+SPtr<Node> Node::getParent() {
+
+    return SPtr<Node>(parent);
+}
+
+
 SPtr<Node> Node::findChild(const char* name) {
 
     if(!strcmp(this->name,name)) {
@@ -64,6 +70,11 @@ SPtr<Node> Node::findChild(const char* name) {
     return result;
 }
 
+
+ArrayList<SPtr<Node> >& Node::getChildren() {
+
+    return *children;
+}
 
 void Node::attachChild(SPtr<Node> child) {
 
@@ -100,6 +111,12 @@ void Node::reparent(Node& newParent) {
         parent->detachChild(thisPointer);
         newParent.attachChild(thisPointer);
     }
+}
+
+
+bool Node::isLeaf() {
+
+    return children->size() == 0;
 }
 
 

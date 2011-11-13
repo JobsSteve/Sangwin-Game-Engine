@@ -5,7 +5,7 @@
 #include "headers/lights/SpotLight.h"
 
 /**
- * A LightMan is a positional Light that can be placed in a 3D scenegraph. This
+ * A LightMan is a positional Light that can be placed in a scenegraph. This
  * makes it easy to position the light using coordinates local to other
  * scenegraph objects.
  *
@@ -14,11 +14,11 @@
  * @see Spatial
  *
  * @author Ben Constable, original Java code by Oli Winks
- * @version 1.0
+ * @version 1.1
  *
  * @ingroup Lights
  */
-class LightMan: public Spatial<Vec3,Trfm3> {
+class LightMan: public Spatial {
 
 private:
 
@@ -34,7 +34,7 @@ public:
      * @param name Name of this node
      */
     LightMan(const char* name)
-    :Spatial<Vec3,Trfm3>(name),
+    :Spatial(name),
      worldDir(new Vec3(0,0,1)),
      light()
     {}
@@ -45,7 +45,7 @@ public:
      * @param aLight Light
      */
     LightMan(const char* name, SPtr<LightBulb>& aLight)
-    :Spatial<Vec3,Trfm3>(name),
+    :Spatial(name),
      worldDir(new Vec3(0,0,1)),
      light(aLight)
     {}
@@ -55,7 +55,7 @@ public:
      * @param rhs LightMan to copy from.
      */
     LightMan(const LightMan& rhs)
-    :Spatial<Vec3,Trfm3>(rhs),
+    :Spatial(rhs),
      worldDir(new Vec3(*rhs.worldDir)),
      light(rhs.light->clone().smart_static_cast(SPtr<LightBulb>()))
     {}
@@ -96,20 +96,20 @@ public:
      *
      * @return world direction
      */
-    inline Vec3& getWorldDir();
+    Vec3& getWorldDir();
     /**
 
      * Set the Light held by this LightMan to the given parameter.
      *
      * @param light new light
      */
-    inline void setLight(SPtr<LightBulb>& light);
+    void setLight(SPtr<LightBulb>& light);
     /**
      * Return the Light held by this LightMan.
      *
      * @return light
      */
-    inline SPtr<LightBulb> getLight();
+    SPtr<LightBulb> getLight();
     /**
      * Update the Bounding Volume of this LightMan, if it has one.
 
@@ -118,12 +118,12 @@ public:
      * @param from not used
      * @param to not used
      */
-    void updateBounds(ArrayList<SPtr<BoundingVolume<Vec3> > >& childBounds, int from, int to);
+    void updateBounds(ArrayList<SPtr<BoundingVolume> >& childBounds, int from, int to);
     /**
      * Apply the given transform to this LightMan.
      * @param worldTransform
      */
-    void applyTransform(Trfm3& worldTransform);
+    void applyTransform(Trfm& worldTransform);
     /**
      * Return a clone of this LightMan.
      *
@@ -136,33 +136,9 @@ public:
      * @param parent not used
      * @return Clone of this LightMan
      */
-    inline SPtr<Node> cloneTree(SPtr<Node>& parent);
+    SPtr<Node> cloneTree(SPtr<Node>& parent);
     
 };
-
-//INLINE FUNCTION DEFINITIONS
-
-inline Vec3& LightMan::getWorldDir() {
-
-    return *worldDir;
-}
-
-
-inline void LightMan::setLight(SPtr<LightBulb>& light) {
-
-    this->light = light;
-}
-
-
-inline SPtr<LightBulb> LightMan::getLight() {
-
-    return light;
-}
-
-inline SPtr<Node> LightMan::cloneTree(SPtr<Node>& parent) {
-
-    return clone();
-}
 
 #endif	/* LIGHTMAN_H */
 

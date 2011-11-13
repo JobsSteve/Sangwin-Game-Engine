@@ -2,7 +2,7 @@
 
 LightMan& LightMan::operator =(const LightMan& rhs) {
 
-    Spatial<Vec3,Trfm3>::operator =(rhs);
+    Spatial::operator =(rhs);
 
     *worldDir = *rhs.worldDir;
     *light = *rhs.light;
@@ -23,7 +23,31 @@ SPtr<Node> LightMan::detachChild(int i) {
 }
 
 
-void LightMan::updateBounds(ArrayList<SPtr<BoundingVolume<Vec3> > >& childBounds, int from, int to) {
+Vec3& LightMan::getWorldDir() {
+
+    return *worldDir;
+}
+
+
+void LightMan::setLight(SPtr<LightBulb>& light) {
+
+    this->light = light;
+}
+
+
+SPtr<LightBulb> LightMan::getLight() {
+
+    return light;
+}
+
+
+SPtr<Node> LightMan::cloneTree(SPtr<Node>& parent) {
+
+    return clone();
+}
+
+
+void LightMan::updateBounds(ArrayList<SPtr<BoundingVolume> >& childBounds, int from, int to) {
 
     /*If this LightMan has a Bounding Volume, then apply this LightMan's
       world transform to it. This ensures the Bounding Volume matches the
@@ -34,10 +58,10 @@ void LightMan::updateBounds(ArrayList<SPtr<BoundingVolume<Vec3> > >& childBounds
 }
 
 
-void LightMan::applyTransform(Trfm3& worldTransform) {
+void LightMan::applyTransform(Trfm& worldTransform) {
 
     //Apply the transform to the spatial information of this LightMan.
-    Spatial<Vec3,Trfm3>::applyTransform(worldTransform);
+    Spatial::applyTransform(worldTransform);
 
     //Update the position of the light to be the position of the worldTransform.
     light->getPos().toZeros();

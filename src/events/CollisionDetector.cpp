@@ -10,7 +10,7 @@ CollisionDetector::CollisionDetector()
 
 CollisionDetector::CollisionDetector(const CollisionDetector& rhs)
 :events(rhs.events),
- collider(GetNode::copyBound3D(*rhs.collider)),
+ collider(new Bound(*rhs.collider)),
  evt(new CollisionEvent(*rhs.evt))
 {}
 
@@ -28,7 +28,7 @@ CollisionDetector& CollisionDetector::operator =(CollisionDetector& rhs) {
 CollisionDetector::~CollisionDetector() {}
 
 
-void CollisionDetector::checkCollisions(SPtr<Bound<Vec3> > boundNode) {
+void CollisionDetector::checkCollisions(SPtr<Bound> boundNode) {
 
     bool evtReused = false;
     bool shouldRecurse = true;
@@ -75,7 +75,7 @@ void CollisionDetector::checkCollisions(SPtr<Bound<Vec3> > boundNode) {
         //recurse if a collision has not yet been found
         if(shouldRecurse) {
             for(int i=0; i<boundNode->getChildren().size(); i++) {
-                checkCollisions(boundNode->getChildren().get(i).smart_static_cast(SPtr<Bound<Vec3> >()));
+                checkCollisions(boundNode->getChildren().get(i).smart_static_cast(SPtr<Bound>()));
             }
         }
     }
@@ -91,7 +91,7 @@ void CollisionDetector::accend(SPtr<Node> parent, SPtr<Node> child) {
         //Keep moving right along the child list
         for(int i=start; i<parent->getChildren().size(); i++) {
             //Check if this child collides with the current collider
-            checkCollisions(parent->getChildren().get(i).smart_static_cast(SPtr<Bound<Vec3> >()));
+            checkCollisions(parent->getChildren().get(i).smart_static_cast(SPtr<Bound>()));
         }
         //Move up the tree
         accend(parent->getParent(),parent);
@@ -99,7 +99,7 @@ void CollisionDetector::accend(SPtr<Node> parent, SPtr<Node> child) {
 }
 
 
-void CollisionDetector::findColliders(SPtr<Bound<Vec3> > boundNode) {
+void CollisionDetector::findColliders(SPtr<Bound> boundNode) {
 
     //Check for collider
     if(boundNode->getBounds().get() && boundNode->isLeaf()) {
@@ -113,7 +113,7 @@ void CollisionDetector::findColliders(SPtr<Bound<Vec3> > boundNode) {
     else {
         //recurse, checking for colliders for each child of the given Node
         for(int i=0; i<boundNode->getChildren().size(); i++) {
-            findColliders(boundNode->getChildren().get(i).smart_static_cast(SPtr<Bound<Vec3> >()));
+            findColliders(boundNode->getChildren().get(i).smart_static_cast(SPtr<Bound>()));
         }
     }
 }
@@ -121,8 +121,8 @@ void CollisionDetector::findColliders(SPtr<Bound<Vec3> > boundNode) {
 
 void CollisionDetector::detect(SPtr<Node> root) {
 
-    collider = SPtr<Bound<Vec3> >();
-    findColliders(root.smart_static_cast(SPtr<Bound<Vec3> >()));
+    collider = SPtr<Bound>();
+    findColliders(root.smart_static_cast(SPtr<Bound>()));
 
     for(int i=0; i<events->size(); i++) {
         evt = events->get(i);

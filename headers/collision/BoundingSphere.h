@@ -23,8 +23,6 @@
  * @ingroup Collision
  */
 class BoundingSphere: public BoundingVolume {
-
-    friend class GetNode; ///< So GetNode can access protected constructors.
     
 private:
 
@@ -36,7 +34,35 @@ private:
     SPtr<Vec2> tmpV2; ///< temp, used for speed
 
 public:
-
+    
+    /**
+     * Default constructor. Initialises BoundingSphere to size and position 0.
+     */
+    BoundingSphere()
+    :BoundingVolume(),
+     tmpV0(new Vec3()),
+     tmpV1(new Vec3()),
+     tmpV2(new Vec2())
+    {
+        type = SPHERE;
+    }
+    /**
+     * Constructor which sets the initial position and radius of this
+     * BoundingSphere.
+     *
+     * @param pos initial position
+     * @param rad initial radius
+     */
+    BoundingSphere(const Vec3& pos, float rad)
+    :BoundingVolume(pos),
+     normalRadius(rad),
+     radius(rad),
+     tmpV0(new Vec3()),
+     tmpV1(new Vec3()),
+     tmpV2(new Vec2())
+    {
+        type = SPHERE;
+    }
     /**
      * Copy constructor.
      *
@@ -83,36 +109,6 @@ public:
     bool collides(const BoundingVolume& bounds);
     SPtr<BoundingVolume> clone();
 
-protected:
-
-    /**
-     * Default constructor. Initialises BoundingSphere to size and position 0.
-     */
-    BoundingSphere()
-    :BoundingVolume(),
-     tmpV0(new Vec3()),
-     tmpV1(new Vec3()),
-     tmpV2(new Vec2())
-    {
-        type = SPHERE;
-    }
-    /**
-     * Constructor which sets the initial position and radius of this
-     * BoundingSphere.
-     *
-     * @param pos initial position
-     * @param rad initial radius
-     */
-    BoundingSphere(const Vec3& pos, float rad)
-    :BoundingVolume(pos),
-     normalRadius(rad),
-     radius(rad),
-     tmpV0(new Vec3()),
-     tmpV1(new Vec3()),
-     tmpV2(new Vec2())
-    {
-        type = SPHERE;
-    }
 };
 
 

@@ -18,14 +18,14 @@
  */
 class Spatial: public Bound {
 
-    friend class GetNode; ///< friend so that GetNode can access protected constructors
-
 protected:
 
     bool hasTransformed; ///< used by the renderer to tell when a transformation has occured
     SPtr<Trfm> localTransform; ///< local spatial information
     SPtr<Trfm> worldTransform; ///< world spatial information
 
+public:
+    
     /**
      * Default constructor. Create default Trfm data and gives the Spatial a
      * name from the given parameter.
@@ -53,9 +53,7 @@ protected:
     {
         type = Node::SPATIAL;
     }
-
-public:
-
+    
     /**
      * Assignment operator. See Node for more information.
      * 

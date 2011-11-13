@@ -23,12 +23,14 @@
  */
 class Bound: public Node {
 
-    friend class GetNode; ///< friend so that it can access protected constructors
-
 protected:
 
     SPtr<BoundingVolume> bounds; ///< BoundingVolume held by this Bound
 
+public:
+
+    int boundGroup; ///< Uniquely identifies groups of Bounds
+    
     /**
      * Default constructor. Sets Node to default and no BoundingVolume on this
      * Bound.
@@ -64,11 +66,7 @@ protected:
         type = Node::BOUND;
         *bounds = *rhs.bounds;
     }
-
-public:
-
-    int boundGroup; ///< Uniquely identifies groups of Bounds
-
+    
     /**
      * Assignment operator. See Node for more info. BoundingVolume is a deep 
      * copy.

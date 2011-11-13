@@ -28,7 +28,25 @@ CollisionEvent& CollisionEvent::operator =(const CollisionEvent& rhs) {
 CollisionEvent::~CollisionEvent() {}
 
 
-bool CollisionEvent::isCollisionBetween(const SPtr<Bound<Vec3> >& a, const SPtr<Bound<Vec3> >& b) {
+CollisionEvent::EventType CollisionEvent::getType() {
+
+    return type;
+}
+
+
+SPtr<Bound> CollisionEvent::getA() {
+
+    return A;
+}
+
+
+SPtr<Bound> CollisionEvent::getB() {
+
+    return B;
+}
+
+
+bool CollisionEvent::isCollisionBetween(const SPtr<Bound>& a, const SPtr<Bound>& b) {
 
     if(A == a && B == b) {
         return true;

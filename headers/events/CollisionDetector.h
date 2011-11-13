@@ -4,7 +4,6 @@
 #include "headers/utils/Object.h"
 #include "headers/utils/LinkedList.h"
 #include "headers/events/CollisionEvent.h"
-#include "headers/utils/GetNode.h"
 
 /**
  * The CollisionDetector checks the scenegraphs BoundingVolume heirarchy for
@@ -12,11 +11,9 @@
  *
  * The collision detection algorithm used requires the scenegraph to be ordered
  * with leaf nodes on the left of non-leaf nodes.
- *
- * THIS COLLISION DETECTOR CAN ONLY BE USED WITH 3D SCENEGRAPHS.
  * 
  * @author Ben Constable, original Java code by Oli Winks
- * @version 1.0
+ * @version 1.1
  *
  * @ingroup Events
  */
@@ -27,7 +24,7 @@ private:
     SPtr<LinkedList<SPtr<CollisionEvent> > > events; ///< list of events found on the last scenegraph traversal
 
     //Convenience variables, used for speed
-    SPtr<Bound<Vec3> > collider;
+    SPtr<Bound> collider;
     SPtr<CollisionEvent> evt;
 
     /**
@@ -36,7 +33,7 @@ private:
      *
      * @param boundNode Bound to check the subtree of
      */
-    void checkCollisions(SPtr<Bound<Vec3> > boundNode);
+    void checkCollisions(SPtr<Bound> boundNode);
     /**
      * Recursively move up the tree to the root from the given parent Node,
      * checking for collisions at each level.
@@ -54,7 +51,7 @@ private:
      *
      * @param boundNode Node to check
      */
-    void findColliders(SPtr<Bound<Vec3> > boundNode);
+    void findColliders(SPtr<Bound> boundNode);
 
 public:
 

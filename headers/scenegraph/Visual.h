@@ -17,13 +17,15 @@
  */
 class Visual: public Spatial {
 
-    friend class GetNode; ///< friend so that GetNode can access protected constructors
-
 protected:
 
     SPtr<App> worldAppearance; ///< local visual information
     SPtr<App> localAppearance; ///< world visual information
 
+public:
+
+    bool hasVisualStateChanged; ///< whether or not this Visual has changed in appearance
+    
     /**
      * Default constructor. Gives default visual information and sets the name
      * to the given parameter.
@@ -51,11 +53,6 @@ protected:
     {
         this->type = Node::VISUAL;
     }
-    
-public:
-
-    bool hasVisualStateChanged; ///< whether or not this Visual has changed in appearance
-
     /**
      * Assignment operator. See Node for more information on copy behaviour.
      *

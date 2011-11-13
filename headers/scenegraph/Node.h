@@ -28,24 +28,6 @@ public:
     NodeType type; ///< The type of this Node, as defined in the enum.
 
     /**
-     * Default constructor. Creates an empty list of children and no parent.
-     * Name is the empty string.
-     */
-    Node();
-    /**
-     * Constructor that gives this Node a name from the given parameter. Child
-     * and parent behaviour is as default.
-     * 
-     * @param aName Name for this Node
-     */
-    Node(const char* aName);
-    /**
-     * Copy constructor. Children are SHALLOW copies.
-     *
-     * @param rhs Node to copy from
-     */
-    Node(const Node& rhs);
-    /**
      * Assignment operator. Children are SHALLOW copies.
      * 
      * @param rhs Node to copy from
@@ -62,7 +44,7 @@ public:
      *
      * @return parent
      */
-    inline SPtr<Node> getParent();
+    SPtr<Node> getParent();
     /**
      * Search for a child of the given name in the subtree of this Node
      *
@@ -75,7 +57,7 @@ public:
      *
      * @return ArrayList of children
      */
-    inline ArrayList<SPtr<Node> >& getChildren();
+    ArrayList<SPtr<Node> >& getChildren();
     /**
      * Attach a child to this Node, if it is not already attached.
      * 
@@ -107,7 +89,7 @@ public:
      *
      * @return true if Node is a leaf, false if not
      */
-    inline bool isLeaf();
+    bool isLeaf();
     /**
      * Create a new, identical copy of this Node, detached from its parent.
      *
@@ -128,26 +110,26 @@ protected:
     
     Node* parent;
     ArrayList<SPtr<Node> >* children;
+    
+    /**
+     * Default constructor. Creates an empty list of children and no parent.
+     * Name is the empty string.
+     */
+    Node();
+    /**
+     * Constructor that gives this Node a name from the given parameter. Child
+     * and parent behaviour is as default.
+     * 
+     * @param aName Name for this Node
+     */
+    Node(const char* aName);
+    /**
+     * Copy constructor. Children are SHALLOW copies.
+     *
+     * @param rhs Node to copy from
+     */
+    Node(const Node& rhs);
 };
-
-//INLINE FUNCTION DEFINITIONS
-
-inline SPtr<Node> Node::getParent() {
-
-    return SPtr<Node>(parent);
-}
-
-
-inline ArrayList<SPtr<Node> >& Node::getChildren() {
-
-    return *children;
-}
-
-
-inline bool Node::isLeaf() {
-
-    return children->size() == 0;
-}
 
 #endif	/* NODE_H */
 

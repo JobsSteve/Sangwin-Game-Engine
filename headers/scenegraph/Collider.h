@@ -15,11 +15,8 @@
  */
 class Collider: public Spatial {
 
-    friend class GetNode; ///< friend so GetNode can access protected constructors
-
-protected:
-
-
+public:
+    
     /**
      * Default constructor. Create a Collider with the given name and default
      * Spatial information. No BoundingVolume is set.
@@ -41,9 +38,6 @@ protected:
     {
         this->type = Node::COLLIDER;
     }
-
-public:
-
     /**
      * Assignment operator. See Node for more information on copy behaviour.
      *

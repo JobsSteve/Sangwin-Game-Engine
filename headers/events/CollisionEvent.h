@@ -38,8 +38,8 @@ public:
 
     bool inUse; ///< whether or not this Event has been used before
     EventType type; ///< Current type of this CollisionEvent
-    SPtr<Bound<Vec3> > A; ///< First collider object this event is handling
-    SPtr<Bound<Vec3> > B; ///< Second collider object this event is handling
+    SPtr<Bound> A; ///< First collider object this event is handling
+    SPtr<Bound> B; ///< Second collider object this event is handling
 
     /**
      * Default constructor. Null collider pointers and event not in use.
@@ -68,19 +68,19 @@ public:
      *
      * @return type
      */
-    inline EventType getType();
+    EventType getType();
     /**
      * Return the first collider this CollisionEvent is handling.
      *
      * @return first collider
      */
-    inline SPtr<Bound<Vec3> > getA();
+    SPtr<Bound> getA();
     /**
      * Return the second collider this CollisionEvent is handling.
      *
      * @return second collider
      */
-    inline SPtr<Bound<Vec3> > getB();
+    SPtr<Bound> getB();
     /**
      * Check if this CollisionEvent is handling a collision between the given
      * parameters.
@@ -90,27 +90,8 @@ public:
      * @return true if this CollisionEvent is handling collisions between a and
      * b, false if not.
      */
-    bool isCollisionBetween(const SPtr<Bound<Vec3> >& a, const SPtr<Bound<Vec3> >& b);
+    bool isCollisionBetween(const SPtr<Bound>& a, const SPtr<Bound>& b);
 };
-
-//INLINE FUNCTION DEFINITIONS
-
-inline CollisionEvent::EventType CollisionEvent::getType() {
-
-    return type;
-}
-
-
-inline SPtr<Bound<Vec3> > CollisionEvent::getA() {
-
-    return A;
-}
-
-
-inline SPtr<Bound<Vec3> > CollisionEvent::getB() {
-
-    return B;
-}
 
 #endif	/* COLLISIONEVENT_H */
 
