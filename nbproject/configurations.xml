@@ -93,6 +93,7 @@
         <itemPath>src/appearance/Texture.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="cameras" displayName="cameras" projectFiles="true">
+        <itemPath>src/cameras/Cam.cpp</itemPath>
         <itemPath>src/cameras/Cam2.cpp</itemPath>
         <itemPath>src/cameras/Cam3.cpp</itemPath>
         <itemPath>src/cameras/CameraMan2.cpp</itemPath>

@@ -34,6 +34,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/cameras/Cam.o \
 	${OBJECTDIR}/src/cameras/CameraMan2.o \
 	${OBJECTDIR}/src/appearance/Alpha.o \
 	${OBJECTDIR}/src/scenegraph/Collider.o \
@@ -106,6 +107,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sangwinredesign: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sangwinredesign ${OBJECTFILES} ${LDLIBSOPTIONS} 
+
+${OBJECTDIR}/src/cameras/Cam.o: src/cameras/Cam.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/cameras
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/cameras/Cam.o src/cameras/Cam.cpp
 
 ${OBJECTDIR}/src/cameras/CameraMan2.o: src/cameras/CameraMan2.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/cameras
