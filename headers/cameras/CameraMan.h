@@ -1,5 +1,5 @@
-#ifndef CAMERAMAN3_H
-#define	CAMERAMAN3_H
+#ifndef CAMERAMAN_H
+#define	CAMERAMAN_H
 
 #include "headers/scenegraph/Spatial.h"
 #include "headers/cameras/Cam.h"
@@ -146,5 +146,5 @@ public:
 
 };
 
-#endif	/* CAMERAMAN3_H */
+#endif	/* CAMERAMAN_H */
 
