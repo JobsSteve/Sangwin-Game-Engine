@@ -1,8 +1,8 @@
-#include "headers/cameras/CameraMan3.h"
+#include "headers/cameras/CameraMan.h"
 
-CameraMan3& CameraMan3::operator =(const CameraMan3& rhs) {
+CameraMan& CameraMan::operator =(const CameraMan& rhs) {
 
-    Spatial<Vec3,Trfm3>::operator =(rhs);
+    Spatial::operator =(rhs);
 
     *worldLookAt = *rhs.worldLookAt;
     *worldDir = *rhs.worldDir;
@@ -13,19 +13,49 @@ CameraMan3& CameraMan3::operator =(const CameraMan3& rhs) {
 }
 
 
-void CameraMan3::attachChild(SPtr<Node>& child) {}
+void CameraMan::attachChild(SPtr<Node>& child) {}
 
 
-void CameraMan3::detachChild(SPtr<Node>& child) {}
+void CameraMan::detachChild(SPtr<Node>& child) {}
 
 
-SPtr<Node> CameraMan3::detachChild(int i) {
+SPtr<Node> CameraMan::detachChild(int i) {
 
     return SPtr<Node>();
 }
 
 
-void CameraMan3::updateBounds(ArrayList<SPtr<BoundingVolume<Vec3> > >& childBounds, int from, int to) {
+Vec3& CameraMan::getWorldLookAt() {
+
+    return *worldLookAt;
+}
+
+
+Vec3& CameraMan::getWorldDir() {
+
+    return *worldDir;
+}
+
+
+Vec3& CameraMan::getWorldUp() {
+
+    return *worldUp;
+}
+
+
+void CameraMan::setCamera(SPtr<Cam>& camera) {
+
+    this->cam = camera;
+}
+
+
+SPtr<Cam> CameraMan::getCamera() {
+
+    return cam;
+}
+
+
+void CameraMan::updateBounds(ArrayList<SPtr<BoundingVolume> >& childBounds, int from, int to) {
 
     if(this->bounds.get()) {
         bounds->applyTransform(*this->worldTransform);
@@ -33,9 +63,9 @@ void CameraMan3::updateBounds(ArrayList<SPtr<BoundingVolume<Vec3> > >& childBoun
 }
 
 
-void CameraMan3::applyTransform(Trfm3& worldTransform) {
+void CameraMan::applyTransform(Trfm& worldTransform) {
 
-    Spatial<Vec3,Trfm3>::applyTransform(worldTransform);
+    Spatial::applyTransform(worldTransform);
 
     //calculate camera pos
     cam->getPos().toZeros();
@@ -62,13 +92,13 @@ void CameraMan3::applyTransform(Trfm3& worldTransform) {
 }
 
 
-SPtr<Node> CameraMan3::clone() {
+SPtr<Node> CameraMan::clone() {
 
     return SPtr<Node>();
 }
 
 
-SPtr<Node> CameraMan3::cloneTree(SPtr<Node>& parent) {
+SPtr<Node> CameraMan::cloneTree(SPtr<Node>& parent) {
 
     return clone();
 }
